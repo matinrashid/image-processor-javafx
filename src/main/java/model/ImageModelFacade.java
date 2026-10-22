@@ -14,6 +14,15 @@ public class ImageModelFacade {
     private int[][] originalPixels; // orginalet som aldrig ändras
     private int[][] currentPixels;
 
+    /**
+     * Sparar en ny bild i modellen.
+     *
+     * Originalbilden och den aktuella bilden
+     * sparas som separata pixelmatriser.
+     *
+     * @param pixels pixelmatrisen som ska lagras
+     */
+
     public void setImage(int[][] pixels) {
         originalPixels = copyPixels(pixels);
         currentPixels = copyPixels(pixels);
@@ -21,7 +30,10 @@ public class ImageModelFacade {
 
     /**
      * Returnerar kopia av aktuella matrisen
+     *
+     * @return en kopia av den aktuella pixelmatrisen
      */
+
     public int[][] getCurrentPixels() {
         return copyPixels(currentPixels);
     }

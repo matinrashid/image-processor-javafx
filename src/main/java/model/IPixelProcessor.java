@@ -2,7 +2,9 @@ package model;
 /**
  * Interface for image processing operations.
  * All image processors implement this interface.
+ *
  * ---STRATEGY---
+ * Fasaden kan köra vilken som helst utan att veta vilken det är (polymorfism)
  */
 public interface IPixelProcessor {
 

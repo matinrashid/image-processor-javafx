@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * ta emot användarens handlingar, anropa modellen, och uppdatera vyn
+ * Hanterar användarens val i programmet.
  * Kopplar ihop vyn och modellen.
  */
 public class MainController {
@@ -53,7 +53,6 @@ public class MainController {
 
         File file = chooser.showOpenDialog(stage);
 
-        // Om användaren avbryter
         if (file == null) {
             return;
         }
@@ -95,7 +94,6 @@ public class MainController {
             return;
         }
 
-        // vi lägger till ".png" om man glömt
         if (!file.getName().toLowerCase().endsWith(".png")) {
             file = new File(file.getAbsolutePath() + ".png");
         }
@@ -135,8 +133,8 @@ public class MainController {
     }
 
     /**
-     * Ändrar bildens kontrast.
-     * Två sliders för användarens val.
+     * Ändrar bildens kontrast med Window/Level.
+     * Användaren väljer värden med två sliders.
      */
     public void onWindowLevelSelected() {
         if (!hasImage()) {
@@ -153,8 +151,6 @@ public class MainController {
         levelSlider.setShowTickLabels(true);
         windowSlider.setShowTickLabels(true);
 
-
-        // Vi skapar sliders för användaren
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -171,7 +167,6 @@ public class MainController {
         dialog.getDialogPane().getButtonTypes().addAll(
                 ButtonType.OK, ButtonType.CANCEL
         );
-
 
         dialog.setResultConverter(button -> {
             if (button == ButtonType.OK) {
@@ -209,7 +204,7 @@ public class MainController {
     /**
      * Utför en bildbehandling och uppdaterar vyn.
      *
-     * @param processor bildbehandlingen som ska utföras från Strtegy
+     * @param processor bildbehandlingen som ska utföras
      */
     private void applyProcessor(IPixelProcessor processor) {
         if (!hasImage()) {
@@ -240,8 +235,6 @@ public class MainController {
 
     /**
      * Kontrollerar att en bild finns inläst.
-     *
-     * Skydd mot att det inte finns en bild om en operation kallas.
      *
      * @return true om en bild finns, annars false
      */

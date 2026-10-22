@@ -96,7 +96,7 @@ public class MainView extends BorderPane {
         // SetOnAction registrerar eventet
         // Lambdan här är Event-handlern och anropar controllern
         // våra kontroller som hasImage() körs
-        // fasaden används -> svar som uppdaterar vyn
+        // fasaden används sedan fås svar som uppdaterar vyn
 
         openItem.setOnAction(
                 event -> controller.onLoadImage()

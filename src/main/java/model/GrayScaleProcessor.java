@@ -42,10 +42,8 @@ public class GrayScaleProcessor implements IPixelProcessor {
                 newPixels[row][col] = PixelConverter.toArgbPixel(alpha, gray, gray, gray);
             }
         }
+         //ny matris med nya pixelns värde
 
-        /**
-         * ny matris med nya pixelns värde
-         */
         return newPixels;
     }
 }

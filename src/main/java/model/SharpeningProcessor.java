@@ -1,8 +1,12 @@
 package model;
 
 /**
- * Gör kanterna tydligare
+ * Bildbehandlingsklass som gör kanter i en gråskalebild skarpare.
  *
+ * Klassen implementerar {@link IPixelProcessor} och använder en suddig
+ * version av originalbilden för att förstärka skillnader i intensitet.
+ * Först beräknas skillnaden mellan originalbilden och den suddiga bilden.
+ * Därefter läggs denna skillnad till originalbilden.
  *
  * Intensitetsvärden som hamnar utanför intervallet 0 till 255
  * begränsas till detta intervall.
@@ -13,7 +17,6 @@ public class SharpeningProcessor implements IPixelProcessor {
      *
      * Metoden skapar först en suddig version av originalbilden med hjälp
      * av {@link BlurProcessor}.
-     *
      *
      * @param originalPixels pixelmatrisen som ska göras skarpare
      * @return en ny pixelmatris med den skärpta bilden
@@ -41,11 +44,9 @@ public class SharpeningProcessor implements IPixelProcessor {
 
                 int blurredValue = PixelConverter.getRed(blurredPixel);
 
-                /**
-                 * Differans mellan original och blurrad bild som appliceras till originalet.
-                 * Där det är skarpa kanter får vi högt värde och jämna områden ger mot 0
-                 * Bilden blir ljusare jämfört med grannarna
-                 */
+                 // Differans mellan original och blurrad bild som appliceras till originalet.
+                 //      Där det är skarpa kanter får vi högt värde och jämna områden ger mot 0
+                 //      Pixeln blir ljusare jämfört med grannarna
 
                 int difference = originalValue - blurredValue;
 
@@ -56,9 +57,8 @@ public class SharpeningProcessor implements IPixelProcessor {
                     sharpenedValue = 0;
                 }
 
-                /**
-                 * begränsar till intervallet
-                 */
+                 //begränsar till intervallet
+
 
                 if (sharpenedValue > 255)
                 {
