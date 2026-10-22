@@ -6,7 +6,7 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
 /**
- * Conversion from JavaFX Image object to an int[][] ARGB pixel matrix, and vice versa.
+ * Omvandling från JavaFX Image objekt till en int[][] ARGB matris
  */
 public class ImagePixelsConverter {
 
@@ -26,6 +26,9 @@ public class ImagePixelsConverter {
         return pixelMatrix;
     }
 
+    /**
+     * Omvandling åt andra hållet
+     */
 
     public static Image pixelsToImage(int[][] pixelMatrix) {
 

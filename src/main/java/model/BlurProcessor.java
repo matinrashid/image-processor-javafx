@@ -5,7 +5,7 @@ package model;
  *
  * Klassen implementerar {@link IPixelProcessor} och behandlar bilden
  * genom att beräkna ett viktat medelvärde av varje pixel och dess
- * åtta närmaste grannpixlar.
+ * åtta grannpixlar.
  *
  * Vikterna som används är:
  *
@@ -19,11 +19,8 @@ package model;
 public class BlurProcessor implements IPixelProcessor {
 
     /**
-     * Applicerar en blur-effekt på den angivna pixelmatrisen.
      *
-     * För varje pixel beräknas nya värden för röd, grön och blå
-     * genom ett viktat medelvärde av pixeln själv och dess åtta
-     * närmaste grannpixlar. Resultatet lagras i en ny pixelmatris.
+     *  Den starka pixeln “blurras” mot sina grannar.
      *
      * @param originalPixels pixelmatrisen som ska göras suddigare
      * @return en ny pixelmatris som innehåller den suddigare bilden
@@ -52,6 +49,11 @@ public class BlurProcessor implements IPixelProcessor {
                     continue;
                 }
 
+                /**
+                 * rad 0 och kolumn 0 har ingar grannar (kanter) så vi överför de som de är.
+                 */
+
+                //Alpha spelar ingen roll här eftersom den är 255.
                 double redSum = 0;
                 double greenSum = 0;
                 double blueSum = 0;

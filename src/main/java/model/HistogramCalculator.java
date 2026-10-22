@@ -3,18 +3,12 @@ package model;
 /**
  * Klass som beräknar histogrammet för en bild.
  *
- * Histogrammet visar antalet pixlar för varje
+ * Visar antalet pixlar för varje
  * intensitetsvärde mellan 0 och 255 för färgerna
  * röd, grön och blå.
  */
 public class HistogramCalculator {
     /**
-     * Beräknar histogrammet för en given pixelmatris.
-     *
-     * Metoden går igenom bildens alla pixlar och räknar
-     * hur många gånger varje intensitetsvärde förekommer
-     * för respektive färgkanal.
-     *
      * @param pixels pixelmatrisen som representerar bilden
      * @return en 256x3-matris med antalet pixlar för varje
      *         intensitetsvärde för röd, grön och blå

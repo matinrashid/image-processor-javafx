@@ -2,39 +2,25 @@
 package model;
 
 /**
- * Fasadklass för bildbehandlingsmodellen.
- *
- * Klassen ansvarar för att lagra originalbildens
- * pixelmatris och den aktuella pixelmatrisen.
+ * ---FAÇADE---
  *
  * Den erbjuder metoder för att utföra bildbehandling,
  * återställa originalbilden och beräkna histogram.
  *
- * Klassen fungerar som ett gränssnitt mellan
- * kontrollern och modellens övriga klasser.
+ * Det är detta controllern känner till, inte logiken bakom.
  */
 public class ImageModelFacade {
 
-    private int[][] originalPixels;
+    private int[][] originalPixels; // orginalet som aldrig ändras
     private int[][] currentPixels;
 
-    /**
-     * Sparar en ny bild i modellen.
-     *
-     * Originalbilden och den aktuella bilden
-     * sparas som separata pixelmatriser.
-     *
-     * @param pixels pixelmatrisen som ska lagras
-     */
     public void setImage(int[][] pixels) {
         originalPixels = copyPixels(pixels);
         currentPixels = copyPixels(pixels);
     }
 
     /**
-     * Returnerar den aktuella pixelmatrisen.
-     *
-     * @return en kopia av den aktuella pixelmatrisen
+     * Returnerar kopia av aktuella matrisen
      */
     public int[][] getCurrentPixels() {
         return copyPixels(currentPixels);
@@ -69,6 +55,9 @@ public class ImageModelFacade {
 
     /**
      * Skapar en kopia av en pixelmatris.
+     *
+     * varje rad med clone() (en djup kopia)
+     * Endast pixels.clone() hade gett en ytlig kopia där raderna delas
      *
      * @param pixels pixelmatrisen som ska kopieras
      * @return en ny pixelmatris med samma värden

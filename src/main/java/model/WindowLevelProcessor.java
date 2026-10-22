@@ -35,12 +35,8 @@ public class WindowLevelProcessor implements IPixelProcessor {
     }
 
     /**
-     * Applicerar Window/Level på den angivna gråskalebilden.
      *
-     * För varje pixel hämtas intensiteten. Intensiteter under level
-     * sätts till 0 och intensiteter över level + window sätts till 255.
-     * Intensiteter inom intervallet skalas linjärt om till intervallet
-     * 0 till 255.
+     * små skillnader blir tydliga. fungerar bra för röntgenbilder.
      *
      * @param originalPixels pixelmatrisen som ska behandlas
      * @return en ny pixelmatris med ändrad kontrast

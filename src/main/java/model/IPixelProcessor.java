@@ -2,6 +2,7 @@ package model;
 /**
  * Interface for image processing operations.
  * All image processors implement this interface.
+ * ---STRATEGY---
  */
 public interface IPixelProcessor {
 

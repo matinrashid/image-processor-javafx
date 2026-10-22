@@ -13,10 +13,6 @@ public class GrayScaleProcessor implements IPixelProcessor {
     /**
      * Omvandlar den angivna pixelmatrisen till gråskala.
      *
-     * För varje pixel beräknas medelvärdet av pixelns röda, gröna och blå
-     * färgkomponenter. En ny pixel skapas därefter där samtliga tre
-     * färgkomponenter har detta medelvärde. Alpha-värdet behålls oförändrat.
-     *
      * @param originalPixels pixelmatrisen som ska omvandlas till gråskala
      * @return en ny pixelmatris som innehåller den gråskalekonverterade bilden
      */
@@ -38,12 +34,18 @@ public class GrayScaleProcessor implements IPixelProcessor {
                 int green = PixelConverter.getGreen(pixel);
                 int blue = PixelConverter.getBlue(pixel);
 
+                 //Medelvärdet av pixelns röda, gröna och blå
+                 //Alpha-värdet behålls oförändrat.
+
                 int gray = (int) ((red + green + blue) / 3.0);
 
                 newPixels[row][col] = PixelConverter.toArgbPixel(alpha, gray, gray, gray);
             }
         }
 
+        /**
+         * ny matris med nya pixelns värde
+         */
         return newPixels;
     }
 }

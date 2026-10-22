@@ -15,6 +15,8 @@ public class PixelConverter {
 
     /**
      * Return the red value, 0..255, from an int representing ARGB.
+     * << && >> = förskjutning
+     * 0XFF det röda
      */
     public static int getRed(int pixelValue) {
         return (pixelValue >> 16) & 0xFF;

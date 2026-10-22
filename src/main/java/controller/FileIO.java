@@ -19,7 +19,7 @@ public class FileIO {
      *
      * @param file filen som ska läsas
      * @return bilden som ett Image-objekt
-     * @throws IOException om filen inte kan läsas
+     * @throws IOException om filen inte kan läsas (alltså ej en bild)
      */
     public static Image loadImage(File file) throws IOException {
 
