@@ -1,3 +1,4 @@
+
 package controller;
 
 import javafx.scene.image.Image;
@@ -6,10 +7,16 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
 /**
- * Omvandling från JavaFX Image objekt till en int[][] ARGB matris
+ * Omvandlar bilder till pixelmatriser och tillbaka.
  */
 public class ImagePixelsConverter {
 
+    /**
+     * Omvandlar en bild till en pixelmatris.
+     *
+     * @param image bilden som ska omvandlas
+     * @return en pixelmatris med bildens färgvärden
+     */
     public static int[][] imageToPixels(Image image) {
         int width = (int) image.getWidth();
         int height = (int) image.getHeight();
@@ -19,7 +26,8 @@ public class ImagePixelsConverter {
 
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
-                pixelMatrix[row][col] = pixelReader.getArgb(col, row);
+                pixelMatrix[row][col] =
+                        pixelReader.getArgb(col, row);
             }
         }
 
@@ -27,22 +35,26 @@ public class ImagePixelsConverter {
     }
 
     /**
-     * Omvandling åt andra hållet
+     * Omvandlar en pixelmatris till en bild.
+     *
+     * @param pixelMatrix matrisen som ska omvandlas
+     * @return bilden som ett Image-objekt
      */
-
     public static Image pixelsToImage(int[][] pixelMatrix) {
 
-        int width = pixelMatrix.length;
-        int height = pixelMatrix[0].length;
+        int height = pixelMatrix.length;
+        int width = pixelMatrix[0].length;
 
-        WritableImage writableImage = new WritableImage(width, height);
+        WritableImage writableImage =
+                new WritableImage(width, height);
+
         PixelWriter pixelWriter = writableImage.getPixelWriter();
 
         int argbValue;
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                argbValue = pixelMatrix[x][y];
-                pixelWriter.setArgb(x,y,argbValue);
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                argbValue = pixelMatrix[row][col];
+                pixelWriter.setArgb(col, row, argbValue);
             }
         }
 
